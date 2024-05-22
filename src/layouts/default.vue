@@ -8,7 +8,7 @@ useHead({
 <template>
   <VitePwaManifest />
 
-  <div class="h-screen bg-white flex flex-col py-6 font-outfit">
+  <div class="h-[calc(100dvh)] bg-white flex flex-col py-6 font-outfit">
     <slot />
   </div>
 </template>
