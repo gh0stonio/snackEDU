@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>Welcome to SnackEDU</h1>
+    <h1 class="text-3xl text-red-600 font-bold underline">Hello world!</h1>
   </div>
 </template>

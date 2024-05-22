@@ -3,4 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   srcDir: "src/",
+  css: ["./assets/css/main.css"],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 });
