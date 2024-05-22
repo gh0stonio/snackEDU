@@ -1,6 +1,4 @@
 <template>
-  <h1 class="text-3xl text-black font-bold flex items-center justify-center pt-1">snackEDU</h1>
-
   <main class="px-6 flex flex-1 flex-col justify-between w-full h-full">
     <section class="pt-6">
       <h3 class="text-3xl text-black font-semibold w-full">What would</h3>
@@ -64,7 +62,5 @@
         </div>
       </div>
     </div>
-
-    <Nav />
   </main>
 </template>

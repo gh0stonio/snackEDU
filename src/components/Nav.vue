@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <nav class="flex justify-center items-center rounded-full h-11 min-h-11 bg-black px-6 gap-10 mx-12">
-    <NuxtLink to="/" class="w-10 h-10 flex items-center justify-center"
+  <nav class="flex justify-center items-center rounded-full h-11 min-h-11 bg-black px-6 gap-10 mx-16">
+    <NuxtLink to="/" class="w-10 h-10 flex items-center justify-center" :replace="true"
       ><svg
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-6 h-6"
+        class="w-5 h-5"
         :class="route.path === '/' ? 'fill-gray-200' : 'fill-zinc-600'"
       >
         <path
@@ -17,11 +17,11 @@
         />
       </svg>
     </NuxtLink>
-    <NuxtLink to="/request" class="w-10 h-10 flex items-center justify-center">
+    <NuxtLink to="/request" class="w-10 h-10 flex items-center justify-center" :replace="true">
       <svg
         viewBox="0 0 48 48"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-7 h-7"
+        class="w-6 h-6"
         :class="route.path === '/request' ? 'fill-gray-200' : 'fill-zinc-600'"
       >
         <path d="M0 0h48v48H0zm36.62 12L31.1 22z" fill="none" />
@@ -30,11 +30,11 @@
         />
       </svg>
     </NuxtLink>
-    <NuxtLink to="/scan" class="w-10 h-10 flex items-center justify-center">
+    <NuxtLink to="/scan" class="w-10 h-10 flex items-center justify-center" :replace="true">
       <svg
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        class="w-7 h-7"
+        class="w-6 h-6"
         :class="route.path === '/scan' ? 'fill-gray-200' : 'fill-zinc-600'"
       >
         <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 18V6h16v12z" />

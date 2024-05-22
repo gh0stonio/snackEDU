@@ -1,6 +1,4 @@
 <template>
-  <h1 class="text-3xl text-black font-bold flex items-center justify-center pt-1">snackEDU</h1>
-
   <main class="px-6 flex flex-1 flex-col justify-between w-full h-full">
     <section class="pt-6">
       <h3 class="text-3xl text-black font-semibold w-full">Let's scan</h3>
@@ -10,10 +8,8 @@
       </div>
     </section>
 
-    <div class="flex flex-col h-full justify-end bg-gray-300 rounded-2xl my-6">
+    <div class="flex flex-col h-full justify-end bg-gray-200 rounded-2xl my-4">
       <div>API barcode scanner</div>
     </div>
-
-    <Nav />
   </main>
 </template>
