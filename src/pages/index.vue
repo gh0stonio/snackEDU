@@ -24,7 +24,7 @@ useHead({
     </div>
 
     <div class="px-8 w-full flex flex-col">
-      <section class="h-36 flex items-center justify-center flex-col">
+      <section class="h-36 flex items-center justify-center flex-col">``
         <h3
           class="text-4xl text-black font-semibold flex items-center justify-center w-full"
         >
