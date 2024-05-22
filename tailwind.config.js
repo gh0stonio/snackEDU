@@ -9,7 +9,14 @@ export default {
     "./src/error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: { outfit: ["Outfit", "sans-serif"] },
+      fontWeight: {
+        semibold: 500,
+        bold: 700,
+        extrabold: 800,
+      },
+    },
   },
   plugins: [],
 };
