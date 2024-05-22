@@ -9,6 +9,14 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "arrowParens": "always",
+    "trailingComma": "all",
+    "vueIndentScriptAndStyle": true
+  },
   "dependencies": {
     "@nuxt/image": "^1.7.0",
     "@vite-pwa/nuxt": "^0.7.0",
