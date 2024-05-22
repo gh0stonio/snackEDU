@@ -1,3 +1,8 @@
+<script setup lang="ts">
+  const user = useCurrentUser();
+  console.log(user);
+</script>
+
 <template>
   <main class="px-6 flex flex-1 flex-col justify-between w-full h-full">
     <section class="pt-6">
