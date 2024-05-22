@@ -44,6 +44,23 @@
       </button>
     </form>
 
+    <div class="grid grid-cols-2 grid-rows-12 w-full h-full gap-3 py-4">
+      <div
+        class="flex flex-col justify-end bg-blue-600 col-start-1 col-end-1 row-start-1 row-end-8 rounded-2xl"
+      >
+        <div>image</div>
+        <div
+          class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500"
+        >
+          Salted
+        </div>
+      </div>
+      <div
+        class="flex flex-col justify-end bg-violet-200 col-start-2 col-end-2 row-start-1 row-end-7 rounded-2xl"
+      >
+        <div>image</div>
+        <div
+          class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500"
         >
           Sweats
         </div>
