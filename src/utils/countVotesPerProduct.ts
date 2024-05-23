@@ -1,6 +1,9 @@
 import { getDocs, query, where, collection } from 'firebase/firestore';
 
 export const countVotes = async (barcode: string): Promise<{ upVotes: number, downVotes: number}> => {
+  if (!barcode) {
+    throw new Error("Barcode is required");
+  }
   const db = useFirestore();
   const q = query(collection(db, "Votes"), where("barcode", "==", barcode));
 
