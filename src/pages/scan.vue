@@ -27,6 +27,10 @@
 
         isFetchingProductData.value = false;
 
+        // Reset the code reader and stop continuous decode
+        codeReader.reset();
+        codeReader.stopContinuousDecode();
+
         router.push({ path: '/details', query: { barcode } });
       }
     } catch (error) {
