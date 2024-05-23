@@ -47,7 +47,10 @@
       <div
         class="flex flex-col justify-end bg-blue-600 col-start-1 col-end-1 row-start-1 row-end-8 rounded-2xl relative"
       >
-        <img src="~/assets/images/salted.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <img
+          src="~/assets/images/salted.png"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] pb-4"
+        />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
           Salted
         </div>
@@ -55,7 +58,10 @@
       <div
         class="flex flex-col justify-end bg-violet-200 col-start-2 col-end-2 row-start-1 row-end-7 rounded-2xl relative"
       >
-        <img src="~/assets/images/sweets.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <img
+          src="~/assets/images/sweets.png"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] pb-4"
+        />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
           Sweets
         </div>
@@ -63,7 +69,10 @@
       <div
         class="flex flex-col justify-end bg-gray-200 col-start-1 col-end-1 row-start-8 row-end-13 rounded-2xl relative"
       >
-        <img src="~/assets/images/coffee.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <img
+          src="~/assets/images/coffee.png"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] pb-4"
+        />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
           Coffee / Tea
         </div>
@@ -71,7 +80,10 @@
       <div
         class="flex flex-col justify-end bg-pink-200 col-start-2 col-end-2 row-start-7 row-end-13 rounded-2xl relative"
       >
-        <img src="~/assets/images/drinks.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <img
+          src="~/assets/images/drinks.png"
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] pb-4"
+        />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
           Drinks
         </div>
