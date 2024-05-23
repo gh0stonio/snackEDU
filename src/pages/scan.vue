@@ -54,8 +54,8 @@
       </div>
     </section>
 
-    <div class="flex flex-col h-full justify-end bg-gray-200 rounded-2xl my-4">
-      <video ref="videoEl" class="w-full h-full"></video>
+    <div class="flex flex-col flex-grow justify-center items-center rounded-2xl py-4 overflow-hidden">
+      <video ref="videoEl" class="w-full max-h-[400px] h-full rounded-2xl object-cover"></video>
       <p v-if="barcodeData">Scanned Barcode: {{ barcodeData }}</p>
       <p v-if="isFetchingProductData">LOADING...</p>
     </div>
