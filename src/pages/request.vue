@@ -8,8 +8,8 @@
       </div>
     </section>
 
-    <div class="flex flex-col h-full justify-end bg-gray-200 rounded-2xl my-4">
-      <div>some stuff</div>
+    <div class="flex flex-col h-full justify-end bg-gray-50 rounded-2xl my-4">
+      <div>TODO</div>
     </div>
   </main>
 </template>

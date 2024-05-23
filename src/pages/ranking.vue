@@ -1,36 +1,32 @@
 <script setup lang="ts">
+  const rankedProducts = ref<string[]>([]); // To store the ranked product barcodes
 
-definePageMeta({
-  layout: false,
-});
-
-const rankedProducts = ref<string[]>([]); // To store the ranked product barcodes
-
-onMounted(async () => {
-  try {
-    const products = await rankProducts();
-    rankedProducts.value = products.filter(product => product !== undefined && product !== null && product.trim() !== '' );
-
-  } catch (error) {
-    console.error("Failed to fetch ranked products:", error);
-  }
-});
+  onMounted(async () => {
+    try {
+      const products = await rankProducts();
+      rankedProducts.value = products.filter(
+        (product) => product !== undefined && product !== null && product.trim() !== '',
+      );
+    } catch (error) {
+      console.error('Failed to fetch ranked products:', error);
+    }
+  });
 </script>
 
 <template>
-  <div class="h-[calc(100dvh)] bg-black flex flex-col font-outfit py-6">
-    <header class="w-full h-14 flex justify-between items-center">
-      <h1 class="basis-1/3 text-lg text-white flex justify-center items-center">Product Rankings</h1>
-      <div class="basis-1/3"></div>
-    </header>
+  <main class="px-6 flex flex-1 flex-col justify-between w-full h-full">
+    <section class="pt-6">
+      <h3 class="text-3xl text-black font-semibold w-full">One snack to</h3>
+      <div class="flex w-full gap-2">
+        <h3 class="text-3xl text-black font-semibold">rule</h3>
+        <h3 class="text-3xl text-gray-400 font-semibold">them all!</h3>
+      </div>
+    </section>
 
-    <main class="w-full px-6 h-full">
-      <h2 class="text-xl text-white mt-6">Ranked Products</h2>
-      <ul class="text-white">
-        <li v-for="(name, index) in rankedProducts" :key="index">
-          {{ index + 1 }}. {{ name }}
-        </li>
+    <div class="flex flex-col h-full justify-start items-start bg-gray-50 rounded-2xl my-4">
+      <ul class="text-black">
+        <li v-for="(name, index) in rankedProducts" :key="index">{{ index + 1 }}. {{ name }}</li>
       </ul>
-    </main>
-  </div>
+    </div>
+  </main>
 </template>
