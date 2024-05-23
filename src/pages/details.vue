@@ -59,7 +59,7 @@
           </div>
 
           <div class="flex py-4">
-            <p v-if="product"><NuxtImg :src="nutriscoreImgPath" class="h-[50px]" /></p>
+            <p v-if="product"><img :src="nutriscoreImgPath" class="h-[50px]" /></p>
             <p v-else>...</p>
           </div>
         </div>

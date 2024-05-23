@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   srcDir: 'src/',
   ssr: false,
 
-  modules: ['@vite-pwa/nuxt', 'nuxt-vuefire', "@nuxt/image"],
+  modules: ['@vite-pwa/nuxt', 'nuxt-vuefire'],
 
   css: ['./assets/css/main.css'],
   postcss: {

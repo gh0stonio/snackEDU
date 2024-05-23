@@ -44,26 +44,36 @@
     </form>
 
     <div class="grid grid-cols-2 grid-rows-12 w-full h-full gap-3 py-4">
-      <div class="flex flex-col justify-end bg-blue-600 col-start-1 col-end-1 row-start-1 row-end-8 rounded-2xl">
-        <div>image</div>
+      <div
+        class="flex flex-col justify-end bg-blue-600 col-start-1 col-end-1 row-start-1 row-end-8 rounded-2xl relative"
+      >
+        <img src="~/assets/images/salted.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
           Salted
         </div>
       </div>
-      <div class="flex flex-col justify-end bg-violet-200 col-start-2 col-end-2 row-start-1 row-end-7 rounded-2xl">
-        <div>image</div>
+      <div
+        class="flex flex-col justify-end bg-violet-200 col-start-2 col-end-2 row-start-1 row-end-7 rounded-2xl relative"
+      >
+        <img src="~/assets/images/sweets.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
-          Sweats
+          Sweets
         </div>
       </div>
-      <div class="flex flex-col justify-end bg-gray-200 col-start-1 col-end-1 row-start-8 row-end-13 rounded-2xl">
-        <div>image</div>
-        <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">Tea</div>
-      </div>
-      <div class="flex flex-col justify-end bg-pink-200 col-start-2 col-end-2 row-start-7 row-end-13 rounded-2xl">
-        <div>image</div>
+      <div
+        class="flex flex-col justify-end bg-gray-200 col-start-1 col-end-1 row-start-8 row-end-13 rounded-2xl relative"
+      >
+        <img src="~/assets/images/coffee.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
         <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
-          Coffee / Chocolate
+          Coffee / Tea
+        </div>
+      </div>
+      <div
+        class="flex flex-col justify-end bg-pink-200 col-start-2 col-end-2 row-start-7 row-end-13 rounded-2xl relative"
+      >
+        <img src="~/assets/images/drinks.png" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <div class="bg-white h-7 text-sm flex justify-center items-center mb-2 mx-2 rounded-2xl text-gray-500">
+          Drinks
         </div>
       </div>
     </div>
