@@ -1,15 +1,20 @@
 <script setup lang="ts">
-  import type { Product } from '~/types/global';
+import type { Product } from '~/types/global';
 
   definePageMeta({
     layout: false,
   });
+
+  const user = useCurrentUser().value?.uid;
+  console.log("User:",user);
 
   const route = useRoute();
   const router = useRouter();
 
   const product = ref<Product | undefined>(undefined);
   const barcode = route.query.barcode as string | null;
+
+  const vote = ref<boolean | undefined>(undefined);
 
   const nutriscoreImgPath = computed(() => {
     if (!product.value) {
@@ -28,6 +33,21 @@
     const data = await getProduct(barcode);
     product.value = data;
   });
+
+  const fetchVote = async (barcode: string | null, user: string) => {
+    if (!barcode) return;
+    const voteData = await getVote(barcode,user);
+    if (!voteData) {
+      console.log("No vote found");
+      await addVote(barcode, user, vote.value);
+      }
+    else {
+      // TODO : add "You already voted for this product !"
+      console.log("Vote:", voteData?.vote);
+    }
+  };
+
+
 </script>
 
 <template>
@@ -69,13 +89,17 @@
           <div class="flex w-full justify-between items-center gap-2">
             <button
               type="button"
+              @click="vote = false; fetchVote(barcode,user);"
               class="basis-1/2 text-red-700 hover:text-white border border-red-700 hover:bg-red-700 outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              :class="{ 'bg-red-700 text-white': vote === false }"
             >
               Of course not
             </button>
             <button
               type="button"
+              @click="vote = true; fetchVote(barcode,user);"
               class="basis-1/2 text-green-700 hover:text-white border border-green-700 hover:bg-green-700 outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              :class="{ 'bg-green-700 text-white': vote === true }"
             >
               Hell yes !
             </button>
