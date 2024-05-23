@@ -15,6 +15,8 @@ const product = ref<Product | undefined>(undefined);
 const barcode = route.query.barcode as string | null;
 
 const vote = ref<boolean | undefined>(undefined);
+const upVotes = ref<number | undefined>(undefined);
+const downVotes = ref<number | undefined>(undefined);  
 
 const nutriscoreImgPath = computed(() => {
   if (!product.value) {
@@ -34,6 +36,11 @@ onMounted(async () => {
   product.value = data;
   const voteData = await getVote(barcode, user!);
   vote.value = voteData?.vote;
+
+  const voteResult = await countVotes(barcode);  
+  upVotes.value = voteResult.upVotes; 
+  downVotes.value = voteResult.downVotes; 
+
 });
 
 const saveVote = async (barcode: string | null, user?: string) => {
@@ -99,6 +106,15 @@ const saveVote = async (barcode: string | null, user?: string) => {
       <h2 class="text-xl text-white">Properties</h2>
       <div class="w-full h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
         <p v-if="product" class="text-black">{{ product.description }}</p>
+        <p v-else class="text-black">...</p>
+        <p>upVotes = {{ upVotes }}</p>
+        <p>downVotes = {{ downVotes }}</p>
+      </div>
+      <h2 class="text-xl text-white">Votes</h2>
+      <div class="w-full h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
+        <p v-if="upVotes" class="text-black"> upVotes = {{ upVotes }}</p>
+        <p v-else class="text-black">...</p>
+        <p v-if="downVotes" class="text-black"> downVotes = {{ downVotes }}</p>
         <p v-else class="text-black">...</p>
       </div>
     </main>
