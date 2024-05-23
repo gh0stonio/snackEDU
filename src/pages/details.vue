@@ -1,13 +1,15 @@
 <script setup lang="ts">
-  defineProps<{
-    barcode: string;
-  }>();
-
   definePageMeta({
     layout: false,
   });
 
+  const route = useRoute();
   const router = useRouter();
+
+  const barcode = route.query.barcode as string | null;
+  console.log(barcode);
+
+  //TODO: fetch product data using barcode
 </script>
 
 <template>

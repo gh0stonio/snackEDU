@@ -20,6 +20,8 @@
   "dependencies": {
     "@nuxt/image": "^1.7.0",
     "@vite-pwa/nuxt": "^0.7.0",
+    "@zxing/library": "^0.21.0",
+    "axios": "^1.7.2",
     "firebase": "^10.11.1",
     "nuxt": "^3.11.2",
     "nuxt-vuefire": "^1.0.2",
