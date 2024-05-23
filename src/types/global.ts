@@ -4,3 +4,9 @@ export type Product = {
   nutriscore: string;
   description: string;
 };
+
+export type Vote = {
+  barcode: string;
+  vote: 'yes' | 'no';
+  user: string;
+};
