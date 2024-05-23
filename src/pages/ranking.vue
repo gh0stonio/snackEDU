@@ -8,7 +8,9 @@ const rankedProducts = ref<string[]>([]); // To store the ranked product barcode
 
 onMounted(async () => {
   try {
-    rankedProducts.value = await rankProducts();
+    const products = await rankProducts();
+    rankedProducts.value = products.filter(product => product !== undefined && product !== null && product.trim() !== '' );
+
   } catch (error) {
     console.error("Failed to fetch ranked products:", error);
   }
@@ -25,8 +27,8 @@ onMounted(async () => {
     <main class="w-full px-6 h-full">
       <h2 class="text-xl text-white mt-6">Ranked Products</h2>
       <ul class="text-white">
-        <li v-for="(barcode, index) in rankedProducts" :key="index">
-          {{ index + 1 }}. {{ barcode }}
+        <li v-for="(name, index) in rankedProducts" :key="index">
+          {{ index + 1 }}. {{ name }}
         </li>
       </ul>
     </main>

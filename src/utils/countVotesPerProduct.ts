@@ -19,8 +19,5 @@ export const countVotes = async (barcode: string): Promise<{ upVotes: number, do
       downVotes++;
     }
   });
-
-  console.log('upVotes:', upVotes);
-    console.log('downVotes:', downVotes);
   return { upVotes, downVotes};
 };
