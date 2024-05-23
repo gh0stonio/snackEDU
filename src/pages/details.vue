@@ -11,6 +11,14 @@
   const product = ref<Product | undefined>(undefined);
   const barcode = route.query.barcode as string | null;
 
+  const nutriscoreImgPath = computed(() => {
+    if (!product.value) {
+      return '';
+    }
+
+    return `https://raw.githubusercontent.com/openfoodfacts/openfoodfacts-server/master/html/images/misc/nutriscore-${product.value.nutriscore.toLocaleLowerCase()}.svg`;
+  });
+
   onMounted(async () => {
     if (!barcode) {
       router.push('/');
@@ -38,23 +46,47 @@
     </header>
 
     <main class="w-full px-6 h-full">
-      <div class="w-full px-6 h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
-        <h2 v-if="product" class="text-2xl font-semibold text-black">{{ product.brand }}</h2>
-        <h2 v-else class="text-2xl font-semibold text-black">...</h2>
+      <div class="w-full px-6 h-2/5 my-8 p-4 bg-white rounded-xl flex flex-col items-start justify-between">
+        <div class="flex flex-col">
+          <div>
+            <h2 v-if="product" class="text-2xl font-semibold text-black">{{ product.brand }}</h2>
+            <h2 v-else class="text-2xl font-semibold text-black">...</h2>
+          </div>
 
-        <div class="flex text-gray-400 gap-2 text-sm">
-          <p v-if="product" > {{ product.serving_size }}</p>
-          <p v-else>...</p>
-          <p>-</p>
-          <p v-if="product" >Nutriscore {{ product.nutriscore }}</p>
-          <p v-else>...</p>
+          <div class="flex text-gray-400 gap-2 text-sm">
+            <p v-if="product">{{ product.serving_size }}</p>
+            <p v-else>...</p>
+          </div>
+
+          <div class="flex py-4">
+            <p v-if="product"><NuxtImg :src="nutriscoreImgPath" class="h-[50px]" /></p>
+            <p v-else>...</p>
+          </div>
+        </div>
+
+        <div class="flex w-full flex-col">
+          <p class="pb-2">Should we keep it ?</p>
+          <div class="flex w-full justify-between items-center gap-2">
+            <button
+              type="button"
+              class="basis-1/2 text-red-700 hover:text-white border border-red-700 hover:bg-red-700 outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Of course not
+            </button>
+            <button
+              type="button"
+              class="basis-1/2 text-green-700 hover:text-white border border-green-700 hover:bg-green-700 outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              Hell yes !
+            </button>
+          </div>
         </div>
       </div>
 
       <h2 class="text-xl text-white">Properties</h2>
       <div class="w-full h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
-        <p v-if="product" class="text-black"> {{ product.description }}</p>
-        <p v-else class="text-black ">...</p>
+        <p v-if="product" class="text-black">{{ product.description }}</p>
+        <p v-else class="text-black">...</p>
       </div>
     </main>
   </div>
