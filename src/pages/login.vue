@@ -17,11 +17,11 @@
 
     const userCredentials = await signInWithPopup(auth, new GoogleAuthProvider());
 
-    if (userCredentials.user.email?.split('@')[1] !== 'datadoghq.com') {
-      error.value = 'You must use a datadoghq.com email to log in.';
-      await signOut(auth);
-      return;
-    }
+    // if (userCredentials.user.email?.split('@')[1] !== 'datadoghq.com') {
+    //   error.value = 'You must use a datadoghq.com email to log in.';
+    //   await signOut(auth);
+    //   return;
+    // }
 
     router.push({ path: (route.params.redirect as string) || '/' });
   }
