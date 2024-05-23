@@ -18,6 +18,7 @@
       const videoElement = videoEl.value;
       const result = await codeReader.decodeOnceFromVideoDevice(undefined, videoElement);
       const barcode = result.getText();
+      console.log('Barcode: ', barcode);
 
       const product = await getProduct(barcode);
       if (!product) {
@@ -28,6 +29,10 @@
 
         await setDoc(doc(db, 'Products', barcode), {
           brand: data.product.brands,
+          nutriments : data.product.nutriments,
+          nutriscore : data.product.nutriscore_grade.toUpperCase(),
+          description : data.product.ecoscore_data.agribalyse.name_en,
+          serving_size : data.product.serving_size,
         });
 
         // Reset the code reader and stop continuous decode

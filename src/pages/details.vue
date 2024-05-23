@@ -43,13 +43,19 @@
         <h2 v-else class="text-2xl font-semibold text-black">...</h2>
 
         <div class="flex text-gray-400 gap-2 text-sm">
-          <p>250mg</p>
+          <p v-if="product" > {{ product.serving_size }}</p>
+          <p v-else>...</p>
           <p>-</p>
-          <p>Nutriscore E</p>
+          <p v-if="product" >Nutriscore {{ product.nutriscore }}</p>
+          <p v-else>...</p>
         </div>
       </div>
 
       <h2 class="text-xl text-white">Properties</h2>
+      <div class="w-full h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
+        <p v-if="product" class="text-black"> {{ product.description }}</p>
+        <p v-else class="text-black ">...</p>
+      </div>
     </main>
   </div>
 </template>

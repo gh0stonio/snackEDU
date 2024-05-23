@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://world.openfoodfacts.org/api/v0/product/';
+const API_URL = 'https://fr.openfoodfacts.org/api/v0/product/';
 
 export const fetchProductData = async (barcode: string): Promise<{ data: any; error?: string }> => {
   try {
