@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { doc, getDoc} from 'firebase/firestore';
+
   definePageMeta({
     layout: false,
   });
@@ -6,8 +8,20 @@
   const route = useRoute();
   const router = useRouter();
 
+  const db = useFirestore()
+
+  const product = ref(null);
+
+
   const barcode = route.query.barcode as string | null;
   console.log(barcode);
+
+  onMounted(async () => {
+    const docRef = doc(db, 'Products', barcode)
+    const docSnap = await getDoc(docRef);
+    console.log('fetch product data using barcode',docSnap.data());
+    product.value = docSnap.data();
+  });
 
   //TODO: fetch product data using barcode
 </script>
@@ -29,7 +43,8 @@
 
     <main class="w-full px-6 h-full">
       <div class="w-full px-6 h-2/5 my-8 p-4 bg-gray-100 rounded-xl">
-        <h2 class="text-2xl font-semibold text-black">Product name</h2>
+        <h2 v-if="product" class="text-2xl font-semibold text-black">{{ product.brand }}</h2>
+        <h2 v-else class="text-2xl font-semibold text-black">...</h2>
         <div class="flex text-gray-400 gap-2 text-sm">
           <p>250mg</p>
           <p>-</p>

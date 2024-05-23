@@ -1,42 +1,53 @@
 <script setup lang="ts">
-  import { BrowserBarcodeReader } from '@zxing/library';
+import { BrowserBarcodeReader } from '@zxing/library';
+import { doc, getDoc, setDoc } from 'firebase/firestore'
 
-  const router = useRouter();
+const db = useFirestore()
 
-  const videoEl = ref();
-  const barcodeData = ref<string | null>(null);
+const router = useRouter();
 
-  const codeReader = new BrowserBarcodeReader();
+const videoEl = ref();
+const barcodeData = ref<string | null>(null);
 
-  const isFetchingProductData = ref(false);
+const codeReader = new BrowserBarcodeReader();
 
-  onMounted(async () => {
-    try {
-      const videoElement = videoEl.value;
-      const result = await codeReader.decodeOnceFromVideoDevice(undefined, videoElement);
-      const barcode = result.getText();
+const isFetchingProductData = ref(false);
 
-      //TODO: check db for existing data
-      const snackDetails = null;
-      if (!snackDetails) {
-        isFetchingProductData.value = true;
-        console.log('start fetching product data for barcode:', barcode);
+onMounted(async () => {
+  try {
+    const videoElement = videoEl.value;
+    const result = await codeReader.decodeOnceFromVideoDevice(undefined, videoElement);
+    const barcode = result.getText();
+    console.log('Barcode:', barcode);
+    const docRef = doc(db, 'Products', barcode)
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.exists()) {
+      isFetchingProductData.value = true;
+      console.log('start fetching product data for barcode:', barcode);
 
-        const { data } = await fetchProductData(barcode);
-        console.log('API response:', data);
+      const { data } = await fetchProductData(barcode);
+      console.log('API response:', data);
 
-        isFetchingProductData.value = false;
+      isFetchingProductData.value = false;
 
-        // Reset the code reader and stop continuous decode
-        codeReader.reset();
-        codeReader.stopContinuousDecode();
+      await setDoc(doc(db, 'Products', barcode), {
+        brand: data.product.brands,
+      });
 
-        router.push({ path: '/details', query: { barcode } });
-      }
-    } catch (error) {
-      console.error('Error scanning barcode: ', error);
+      // Reset the code reader and stop continuous decode
+      codeReader.reset();
+      codeReader.stopContinuousDecode();
+
+      router.push({ path: '/details', query: { barcode } });
+    } else {
+      router.push({ path: '/details', query: { barcode } });
     }
-  });
+
+
+  } catch (error) {
+    console.error('Error scanning barcode: ', error);
+  }
+});
 </script>
 
 <template>
