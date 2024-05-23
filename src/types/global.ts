@@ -7,6 +7,6 @@ export type Product = {
 
 export type Vote = {
   barcode: string;
-  vote: 'yes' | 'no';
+  vote: boolean;
   user: string;
 };
