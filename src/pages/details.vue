@@ -63,13 +63,13 @@ const saveVote = async (barcode: string | null, user?: string) => {
     <main class="w-full px-6 h-full">
       <div class="w-full px-6 h-2/5 my-8 p-4 bg-white rounded-xl flex flex-col items-start justify-between">
         <div class="flex flex-col">
-          <div>
-            <h2 v-if="product" class="text-2xl font-semibold text-black">{{ product.brand }}</h2>
-            <h2 v-else class="text-2xl font-semibold text-black">...</h2>
+          <div v-if="product">
+            <h2 class="text-2xl font-semibold text-black">{{ product.name }}</h2>
           </div>
+          <h2 v-else class="text-2xl font-semibold text-black">...</h2>
 
           <div class="flex text-gray-400 gap-2 text-sm">
-            <p v-if="product">{{ product.serving_size }}</p>
+            <p v-if="product && product.serving_size">{{ product.serving_size }}</p>
             <p v-else>...</p>
           </div>
 

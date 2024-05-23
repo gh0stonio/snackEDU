@@ -28,11 +28,15 @@
         isFetchingProductData.value = false;
 
         await setDoc(doc(db, 'Products', barcode), {
-          brand: data.product.brands,
-          nutriments : data.product.nutriments,
-          nutriscore : data.product.nutriscore_grade.toUpperCase(),
-          description : data.product.ecoscore_data.agribalyse.name_en,
-          serving_size : data.product.serving_size,
+          name: data.product.product_name || '',
+          brand: data.product.brands || '',
+          nutriments: data.product.nutriments || '',
+          nutrient_levels: data.product.nutrient_levels || '',
+          nova_group: data.product.nova_group || '',
+          categories: data.product.categories || '',
+          nutriscore: data.product.nutriscore_grade.toUpperCase() || '',
+          description: data.product.ecoscore_data.agribalyse.name_en || data.product.categories_old || '',
+          serving_size: data.product.serving_size || '',
         });
 
         // Reset the code reader and stop continuous decode
