@@ -1,53 +1,47 @@
 <script setup lang="ts">
-import { BrowserBarcodeReader } from '@zxing/library';
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+  import { BrowserBarcodeReader } from '@zxing/library';
+  import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-const db = useFirestore()
+  const db = useFirestore();
 
-const router = useRouter();
+  const router = useRouter();
 
-const videoEl = ref();
-const barcodeData = ref<string | null>(null);
+  const videoEl = ref();
+  const barcodeData = ref<string | null>(null);
 
-const codeReader = new BrowserBarcodeReader();
+  const codeReader = new BrowserBarcodeReader();
 
-const isFetchingProductData = ref(false);
+  const isFetchingProductData = ref(false);
 
-onMounted(async () => {
-  try {
-    const videoElement = videoEl.value;
-    const result = await codeReader.decodeOnceFromVideoDevice(undefined, videoElement);
-    const barcode = result.getText();
-    console.log('Barcode:', barcode);
-    const docRef = doc(db, 'Products', barcode)
-    const docSnap = await getDoc(docRef);
-    if (!docSnap.exists()) {
-      isFetchingProductData.value = true;
-      console.log('start fetching product data for barcode:', barcode);
+  onMounted(async () => {
+    try {
+      const videoElement = videoEl.value;
+      const result = await codeReader.decodeOnceFromVideoDevice(undefined, videoElement);
+      const barcode = result.getText();
 
-      const { data } = await fetchProductData(barcode);
-      console.log('API response:', data);
+      const product = await getProduct(barcode);
+      if (!product) {
+        isFetchingProductData.value = true;
 
-      isFetchingProductData.value = false;
+        const { data } = await fetchProductData(barcode);
+        isFetchingProductData.value = false;
 
-      await setDoc(doc(db, 'Products', barcode), {
-        brand: data.product.brands,
-      });
+        await setDoc(doc(db, 'Products', barcode), {
+          brand: data.product.brands,
+        });
 
-      // Reset the code reader and stop continuous decode
-      codeReader.reset();
-      codeReader.stopContinuousDecode();
+        // Reset the code reader and stop continuous decode
+        codeReader.reset();
+        codeReader.stopContinuousDecode();
 
-      router.push({ path: '/details', query: { barcode } });
-    } else {
-      router.push({ path: '/details', query: { barcode } });
+        router.push({ path: '/details', query: { barcode } });
+      } else {
+        router.push({ path: '/details', query: { barcode } });
+      }
+    } catch (error) {
+      console.error('Error scanning barcode: ', error);
     }
-
-
-  } catch (error) {
-    console.error('Error scanning barcode: ', error);
-  }
-});
+  });
 </script>
 
 <template>
